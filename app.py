@@ -4,6 +4,7 @@ from flask_restful import Resource, Api, reqparse, abort
 app = Flask(__name__)
 api = Api(app)
 
+# Dictionary containing the quotes
 quotes = {
     "quote1": {
         "content": "People died when they are killed",
@@ -107,10 +108,13 @@ quotes = {
     },
 }
 
+
+# Custom abort function to handle errors
 def abort(quote_id):
     if quote_id not in quotes:
         abort(404, message=f"Todo {quote_id} doesn't exist")
 
+# Request parser for parsing request arguments
 parser = reqparse.RequestParser()
 parser.add_argument('quote')
 
@@ -118,23 +122,33 @@ parser.add_argument('quote')
 def index():
     return render_template('index.html')
 
+# Resource for handling individual quotes
 class Quote(Resource):
+    # Retrieve a specific quote by ID
     def get(self, quote_id):
         abort(quote_id)
         return quotes[quote_id]
+
+    # Delete a specific quote by ID
     def delete(self, quote_id):
         abort(quote_id)
         del quotes[quote_id]
         return "", 204
+
+    # Update a specific quote by ID
     def put(self, quote_id):
         args = parser.parse_args()
         quote = {'quote': args['quote']}
         quotes[quote_id] = quote
         return quote, 201
     
+# Resource for handling a list of quotes
 class QuoteList(Resource):
+    # Retrieve all quotes
     def get(self):
         return quotes
+
+    # Create a new quote
     def post(self):
         args = parser.parse_args()
         quote_id = int(max(quotes.keys()).lstrip('quote')) + 1
@@ -142,6 +156,7 @@ class QuoteList(Resource):
         quotes[quote_id] = {'quote': args['quote']}
         return quotes[quote_id], 201
 
+# Add resources to the API
 api.add_resource(Quote, '/quotes/<quote_id>')
 api.add_resource(QuoteList, '/quotes')
 
