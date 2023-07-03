@@ -24,6 +24,11 @@ To run the Flask Quote API, perform the following steps:
 
 Once the application is running, you can access the API at http://localhost:5000.
 
+# Testing Preview
+
+<img src="https://github.com/JackieC2027/AnimeQuoteRESTfulAPI/assets/110410844/b9e1cd51-bb5d-4d92-beec-289998d59822">
+
+
 # Endpoints
 The API provides the following endpoints:
 
