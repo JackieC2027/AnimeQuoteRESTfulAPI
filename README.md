@@ -98,4 +98,4 @@ PUT /quotes/quote1
 ```
 
 # Conclusion
-The Flask Quote API allows you to manage a collection of quotes from various sources and characters. You can retrieve all the quotes, create new quotes, update existing quotes, and delete quotes using the provided endpoints. Along with documentation, the API has been deployed on Heroku through the link, https://git.heroku.com/limitless-atoll-82717.git. Feel free to explore and modify the API according to your requirements.
+The Flask Quote API allows you to manage a collection of quotes from various sources and characters. You can retrieve all the quotes, create new quotes, update existing quotes, and delete quotes using the provided endpoints. Feel free to explore and modify the API according to your requirements.
